@@ -1,4 +1,4 @@
-export =
+/*export =
   [
     'Win',
     'Half Win',
@@ -7,3 +7,4 @@ export =
     'Half Loss',
     'Loss'
   ];
+*/

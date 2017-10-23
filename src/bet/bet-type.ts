@@ -1,4 +1,4 @@
-export = [
+/*export = [
   'Over 0.5',
   'Over 0.75',
   'Over 1',
@@ -16,4 +16,4 @@ export = [
   'BTTS & Over 2.5',
   'BTTS & Away win',
   'BTTS & Home win'
-];
+];*/
