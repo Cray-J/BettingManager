@@ -1,10 +1,8 @@
-/*export =
-  [
-    'Win',
-    'Half Win',
-    'Push',
-    'Void',
-    'Half Loss',
-    'Loss'
-  ];
-*/
+export enum Outcome {
+  Win,
+  HalfWin,
+  Push,
+  Void,
+  HalfLoss,
+  Loss
+}
