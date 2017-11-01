@@ -1,0 +1,49 @@
+<h3>New Bet</h3>
+<form class="formwidth" (ngSubmit)="onSubmit()" myForm="ngForm">
+  <table class="fullwidth" cellspacing="0">
+    <tr>
+      <td>
+        <mat-input-container class="fullwitdh">
+          <input matInput placeholder="Match" id="match" [(ngModel)]="bet.match" name="match">
+        </mat-input-container>
+      </td>
+      <td>
+          <mat-select placeholder="Type of bet">
+            <mat-option *ngFor="let bettype of bettypes" [value]="bettype.value">{{ bettype.viewValue }}</mat-option>
+          </mat-select>
+
+
+      </td>
+      <td><mat-input-container class="fullwitdh">
+        <input matInput placeholder="Odds" id="odds" [(ngModel)]="bet.odds" name="odds">
+      </mat-input-container></td>
+      <td><mat-input-container class="fullwitdh">
+        <input matInput placeholder="Stake" type="number" id="stake" [(ngModel)]="bet.stake" name="stake">
+      </mat-input-container></td>
+    </tr>
+    <tr>
+      <td>
+      <mat-input-container class="fullwitdh">
+        <input matInput type="date" placeholder="Date" id="date" [(ngModel)]="bet.date" name="date">
+      </mat-input-container>
+      </td>
+      <mat-input-container class="fullwitdh">
+        <input matInput type="text" placeholder="League" id="league" [(ngModel)]="bet.league" name="league">
+      </mat-input-container>
+    </tr>
+    <tr>
+      <td>
+        <mat-checkbox>Red Card</mat-checkbox>
+      </td>
+      <td>
+        <mat-checkbox>Missed Penalty</mat-checkbox>
+      </td>
+
+    </tr>
+
+  </table>
+  <p>
+    <button type="submit" mat-raised-button>Submit</button>
+  </p>
+</form>
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Address } from '../address';
+import { Address } from '../app/address';
 @Component({
   selector: 'my-form',
   templateUrl: './my-form.component.html',

@@ -1,18 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BetTableComponent } from './bet-table.component';
-import {MatTableModule} from "@angular/material";
+import { MatOptionModule, MatTableModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material';
+import {BetModule } from '../bet/bet.module';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { MatButtonModule, MatInputModule, MatSelectModule } from '@angular/material';
+import 'hammerjs';
+import { FormsModule } from '@angular/forms';
+import {KeysPipe} from './keys.pipe';
+
 
 @NgModule({
   declarations: [
-    BetTableComponent
+    BetTableComponent,
+    KeysPipe
   ],
   exports: [
     BetTableComponent
   ],
   imports: [
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    BetModule,
+    MatOptionModule,
+    MatSelectModule,
+    BrowserModule,
+    MatButtonModule,
+    MatInputModule,
+    FormsModule
   ]
 })
 export class BetTableModule { }

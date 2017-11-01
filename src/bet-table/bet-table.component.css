@@ -1,0 +1,92 @@
+
+
+/* Structure */
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  display: flex;
+  align-items: baseline;
+  padding: 8px 24px 0;
+  font-size: 20px;
+  justify-content: space-between;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  flex-grow: 1;
+  margin-left: 32px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+
+
+
+.mdl-cell {
+  padding: 20px;
+  background-color: #f3f3f3;
+}
+
+
+
+input {
+  text-align: right;
+  width: 50px;
+}
+
+mat-card {
+  margin-bottom: 40px;
+  max-width: 450px;
+}
+
+mat-card-title {
+  margin-bottom: 35px;
+}
+
+.mat-card-content > :last-child apd-form-field {
+  height: 30px;
+}
+
+.select {
+  margin-left: auto;
+  width: 150px;
+}
+
+mat-radio-button {
+  margin: 5px;
+}
+
+mat-radio-group {
+  margin-left: auto;
+}
+
+mat-panel-description {
+  justify-content: flex-end;
+}
+
+.contract-container {
+  max-width: 1000px;
+}
+
+@media only screen and (max-width: 1279px) {
+  .contract-container {
+    max-width: 400px;
+  }
+}
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
