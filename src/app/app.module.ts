@@ -10,11 +10,10 @@ import { FormsModule } from '@angular/forms';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
-import { BetModule } from '../bet/bet.module';
-import { MyFormComponent } from '../my-form/my-form.component';
+import { DetailsModule } from '../details/details.module';
 import { BetTableModule } from '../bet-table/bet-table.module';
+import { MyFormComponent } from '../my-form/my-form.component';
 import { NewBetComponent } from '../new-bet/new-bet.component';
-import {DetailsModule} from "../details/details.module";
 
 @NgModule({
   declarations: [
@@ -27,8 +26,6 @@ import {DetailsModule} from "../details/details.module";
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
-    BetModule,
-    BetTableModule,
     MatRadioModule,
     FormsModule,
     MatTabsModule,
@@ -36,7 +33,8 @@ import {DetailsModule} from "../details/details.module";
     MatTableModule,
     MatSelectModule,
     MatCardModule,
-    DetailsModule
+    DetailsModule,
+    BetTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

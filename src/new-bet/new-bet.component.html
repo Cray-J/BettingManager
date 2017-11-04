@@ -1,5 +1,5 @@
 <h3>New Bet</h3>
-<form class="formwidth" (ngSubmit)="onSubmit()" myForm="ngForm">
+<form class="formwidth" (ngSubmit)="onSubmit(bet)" myForm="ngForm">
   <table class="fullwidth" cellspacing="0">
     <tr>
       <td>
@@ -9,22 +9,35 @@
       </td>
       <td>
           <mat-select placeholder="Type of bet">
-            <mat-option *ngFor="let bettype of bettypes" [value]="bettype.value">{{ bettype.viewValue }}</mat-option>
+            <mat-option *ngFor="let bettype of bettypes"
+                        [value]="bettype.key">
+                {{ bettype.value }}</mat-option>
           </mat-select>
-
-
       </td>
-      <td><mat-input-container class="fullwitdh">
-        <input matInput placeholder="Odds" id="odds" [(ngModel)]="bet.odds" name="odds">
-      </mat-input-container></td>
-      <td><mat-input-container class="fullwitdh">
-        <input matInput placeholder="Stake" type="number" id="stake" [(ngModel)]="bet.stake" name="stake">
-      </mat-input-container></td>
+      <td>
+        <mat-input-container class="fullwitdh">
+          <input matInput
+                 placeholder="Odds"
+                 id="odds"
+                 [(ngModel)]="bet.odds"
+                 name="odds">
+        </mat-input-container>
+      </td>
+      <td>
+        <mat-input-container class="fullwitdh">
+          <input matInput
+                 placeholder="Stake"
+                 type="number"
+                 id="stake"
+                 [(ngModel)]="bet.stake"
+                 name="stake">
+          </mat-input-container>
+      </td>
     </tr>
     <tr>
       <td>
       <mat-input-container class="fullwitdh">
-        <input matInput type="date" placeholder="Date" id="date" [(ngModel)]="bet.date" name="date">
+        <input matInput type="date" placeholder="Date" id="date" [(ngModel)]="bet.matchdate" name="date">
       </mat-input-container>
       </td>
       <mat-input-container class="fullwitdh">
@@ -38,12 +51,14 @@
       <td>
         <mat-checkbox>Missed Penalty</mat-checkbox>
       </td>
-
     </tr>
-
   </table>
   <p>
-    <button type="submit" mat-raised-button>Submit</button>
+    <button
+      type="submit"
+      mat-raised-button
+      onclick="saveBet(bet)">
+        Submit</button>
   </p>
 </form>
 

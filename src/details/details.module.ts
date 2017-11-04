@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import 'hammerjs';
 
 import { BetTableModule } from '../bet-table/bet-table.module';
-import { DetailsComponent} from "./details.component";
+import { DetailsComponent} from './details.component';
 
 @NgModule({
   declarations: [

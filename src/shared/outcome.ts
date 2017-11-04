@@ -3,7 +3,7 @@ export enum Outcome {
   win = 'Win',
   halfwin = 'Half Win',
   push = 'Push',
-  void = 'Void',
+  _void = 'Void',
   halfloss = 'Half Loss',
   loss = 'Loss'
 }

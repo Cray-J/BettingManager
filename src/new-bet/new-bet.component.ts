@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Bet } from '../bet/bet';
+import { Bet } from '../shared/bet';
 
 @Component({
   selector: 'app-new-bet',
@@ -8,16 +8,18 @@ import { Bet } from '../bet/bet';
 })
 export class NewBetComponent implements OnInit {
   bet = new Bet();
+
   constructor() {}
-
-
 
   ngOnInit() {
 
   }
-  onSubmit() {
-    alert('New bet created');
+  onSubmit(bet: Bet) {
+    alert('New bet created ' + bet.match);
   }
+
+
+
 
 
 }

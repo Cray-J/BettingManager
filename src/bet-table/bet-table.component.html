@@ -6,105 +6,93 @@
       </mat-form-field>
     </div>
 
-    <mat-table #table [dataSource]="dataSource">
+      <mat-table #table [dataSource]="dataSource">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+      <ng-container matColumnDef="Number">
+        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+      </ng-container>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="Number" >
-      <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="Date">
+        <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.matchdate}}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="Date">
-      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.matchdate}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="Match">
+        <mat-header-cell *matHeaderCellDef>Match</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.match}}</mat-cell>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="Match">
-      <mat-header-cell *matHeaderCellDef>Match</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.match}}</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="Placed_bet">
+        <mat-header-cell *matHeaderCellDef>Bet</mat-header-cell>
+          <mat-cell *matCellDef="let element" >
+            <mat-select
+                        [ngModel] = "element?.placed_bet"
+                        (ngModelChange)="element.placed_bet = $event"
+                        >
+              <mat-option
+                        *ngFor="let bettype of bettypes | appKeys"
+                        [value]="bettype.key">{{bettype.value}}</mat-option>
+            </mat-select>
+          </mat-cell>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="Placed_bet">
-      <mat-header-cell *matHeaderCellDef>Bet</mat-header-cell>
+      <ng-container matColumnDef="Odds">
+        <mat-header-cell *matHeaderCellDef>Odds</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.odds}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Stake">
+        <mat-header-cell *matHeaderCellDef>Stake</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.stake}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Outcome">
+        <mat-header-cell *matHeaderCellDef>Outcome</mat-header-cell>
         <mat-cell *matCellDef="let element" >
-          <mat-select
-                      [ngModel] = "element?.placed_bet"
-                      (ngModelChange)="element.placed_bet = $event"
+          <mat-select (valueChange)="determineBet(element, $event)"
+                      [ngModel]="element?.outcome"
+                      (ngModelChange)="element.outcome = $event"
                       >
             <mat-option
-                      *ngFor="let bettype of bettypes | appKeys"
-                      [value]="bettype.key">{{bettype.value}}</mat-option>
+              *ngFor="let outcome of outcomes | appKeys"
+              [value]="outcome.key">{{outcome.value }}</mat-option>
           </mat-select>
         </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="Odds">
-      <mat-header-cell *matHeaderCellDef>Odds</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.odds}}</mat-cell>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container matColumnDef="Stake">
-      <mat-header-cell *matHeaderCellDef>Stake</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.stake}}</mat-cell>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container matColumnDef="Outcome">
-      <mat-header-cell *matHeaderCellDef>Outcome</mat-header-cell>
-      <mat-cell *matCellDef="let element" >
-        <mat-select (valueChange)="determineBet(element, $event)"
-                    [ngModel]="element?.outcome"
-                    (ngModelChange)="element.outcome = $event"
-                    >
-          <mat-option
-            *ngFor="let outcome of outcomes | appKeys"
-            [value]="outcome.key">{{outcome.value }}</mat-option>
-        </mat-select>
-      </mat-cell>
-    </ng-container>
-<!--
-    <ng-container matColumnDef="League">
-      <mat-header-cell *matHeaderCellDef>League</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.league}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="Result">
-      <mat-header-cell *matHeaderCellDef>Result</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.result}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="Red_Card">
-      <mat-header-cell *matHeaderCellDef>Red Card</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{getBoolean(element.red_card)}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="Missed_Penalty">
-      <mat-header-cell *matHeaderCellDef>Missed Penalty</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{getBoolean(element)}}</mat-cell>
-    </ng-container>
--->
-
-      <ng-container matColumnDef="Details">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element"
-        >
-          <i class="material-icons md-24">details</i>
-        </mat-cell>
+      </ng-container>
+  <!--
+      <ng-container matColumnDef="League">
+        <mat-header-cell *matHeaderCellDef>League</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.league}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Value_Return">
-        <mat-header-cell *matHeaderCellDef>+/-</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.valueReturn}}</mat-cell>
+      <ng-container matColumnDef="Result">
+        <mat-header-cell *matHeaderCellDef>Result</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.result}}</mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="Red_Card">
+        <mat-header-cell *matHeaderCellDef>Red Card</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{getBoolean(element.red_card)}}</mat-cell>
+      </ng-container>
 
+      <ng-container matColumnDef="Missed_Penalty">
+        <mat-header-cell *matHeaderCellDef>Missed Penalty</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{getBoolean(element)}}</mat-cell>
+      </ng-container>
+  -->
+
+        <ng-container matColumnDef="Details">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <i class="material-icons md-24">details</i>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Value_Return">
+          <mat-header-cell *matHeaderCellDef>+/-</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.valueReturn}}</mat-cell>
+        </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>

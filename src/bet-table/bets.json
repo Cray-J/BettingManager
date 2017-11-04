@@ -1,0 +1,13 @@
+{
+  "id": 21,
+  "matchdate": "29.10.2017",
+  "match": "Malaga v Celta Vigo",
+  "placed_bet": "BetType.Over_2_5",
+  "odds": 1.95,
+  "stake": 1,
+  "outcome": "Outcome.win",
+  "league": "Spain",
+  "result": "",
+  "red_card": false,
+  "missed_penalty": false
+}

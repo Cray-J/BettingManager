@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Address } from '../app/address';
 @Component({
-  selector: 'my-form',
+  selector: 'app-my-form',
   templateUrl: './my-form.component.html',
   styleUrls: ['./my-form.component.css']
 })
@@ -11,6 +11,6 @@ export class MyFormComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit() {
-    alert("Thanks for submitting! Data: " + JSON.stringify(this.address));
+    alert('Thanks for submitting! Data: ' + JSON.stringify(this.address));
   }
 }

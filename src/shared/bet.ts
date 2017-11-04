@@ -8,7 +8,6 @@ export class Bet {
     public matchdate?: string,
     public placed_bet?: BetType,
     public odds?: number,
-    public date?: Date,
     public stake?: number,
     public outcome?: Outcome,
     public league?: string,

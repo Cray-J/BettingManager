@@ -1,7 +1,7 @@
 
 import {Component} from '@angular/core';
 import {BetTableComponent} from '../bet-table/bet-table.component';
-import { Outcome } from '../bet/outcome';
+import { Outcome } from '../shared/outcome';
 
 @Component({
   selector: 'app-details',
@@ -42,7 +42,7 @@ export class DetailsComponent {
   getSettledStaked(): number {
     let total = 0;
     for (const bet of this.betTableComponent.data) {
-      if (Outcome[bet.outcome] !== Outcome.awaiting) {
+      if (bet.outcome !== Outcome.awaiting) {
         total += bet.stake * 10;
 
       }
@@ -53,7 +53,7 @@ export class DetailsComponent {
   getAwaiting(): number {
     let total = 0;
     for (const bet of this.betTableComponent.data) {
-      if (Outcome[bet.outcome] !== Outcome.awaiting) {
+      if (bet.outcome !== Outcome.awaiting) {
         total += bet.stake;
       }
     }
@@ -68,7 +68,7 @@ export class DetailsComponent {
     let wins = 0;
 
     for (const bet of this.betTableComponent.data) {
-      if (Outcome[bet.outcome] === type) {
+      if (bet.outcome === type) {
         wins += 1;
       }
     }
@@ -81,18 +81,18 @@ export class DetailsComponent {
     for (const bet of this.betTableComponent.data) {
       const betSize = bet.stake * 10;
 
-      if (Outcome[bet.outcome] === Outcome.win) {
+      if (bet.outcome === Outcome.win) {
         total += betSize * bet.odds;
-       // console.log('Won: ' + betSize * bet.odds);
-      } else if (Outcome[bet.outcome] === Outcome.halfwin) {
+        console.log('Won: ' + betSize * bet.odds);
+      } else if (bet.outcome === Outcome.halfwin) {
         total += betSize * (bet.odds * 0.5);
-      //  console.log('Half won: ' + ((betSize * bet.odds) - betSize) * 0.5);
-      } else if (Outcome[bet.outcome] === Outcome.halfloss) {
+        console.log('Half won: ' + ((betSize * bet.odds) - betSize) * 0.5);
+      } else if (bet.outcome === Outcome.halfloss) {
         total -= betSize * ( bet.odds  * 0.5);
-      //  console.log('Half lost: ' + ((betSize * bet.odds) - betSize) * 0.5);
-      } else if (Outcome[bet.outcome] === Outcome.loss) {
+        console.log('Half lost: ' + ((betSize * bet.odds) - betSize) * 0.5);
+      } else if (bet.outcome === Outcome.loss) {
         total -= betSize;
-     //   console.log('Lost: ' + betSize);
+        console.log('Lost: ' + betSize);
       }
     }
     return total;

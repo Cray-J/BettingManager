@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
-import { Bet } from '../bet/bet';
-import { Outcome } from '../bet/outcome';
-import { BetType } from '../bet/bet-type.enum';
-
+import { Bet } from '../shared/bet';
+import { Outcome } from '../shared/outcome';
+import { BetType } from '../shared/bet-type.enum';
 
 @Component({
   selector: 'app-bet-table',
@@ -15,7 +14,7 @@ export class BetTableComponent {
   displayedColumns= ['Number', 'Date', 'Match', 'Placed_bet', 'Odds', 'Stake', 'Outcome', 'Value_Return', 'Details'];
   dataSource = new BetsDataSource();
   bet = new Bet();
-  data = data;
+  public data = data;
   public outcomes = Outcome;
   public bettypes = BetType;
 
@@ -34,7 +33,7 @@ export class BetTableComponent {
     } else if (Outcome[$event] === Outcome.loss) {
       bet.valueReturn = -betSize;
          console.log('Lost: ' + bet.valueReturn);
-    } else if (Outcome[$event] === Outcome.push || Outcome[$event] === Outcome.void || Outcome[$event] === Outcome.awaiting) {
+    } else if (Outcome[$event] === Outcome.push || Outcome[$event] === Outcome._void || Outcome[$event] === Outcome.awaiting) {
       bet.valueReturn = 0;
     }
   }
@@ -44,6 +43,10 @@ export class BetTableComponent {
       return 'Yes';
     }
     return 'No';
+  }
+
+  setColor(bet: Bet): string {
+    return 'green';
   }
 
 
@@ -57,7 +60,7 @@ const data: Bet[] = [
     placed_bet: BetType.Over_2_75,
     odds: 2.125,
     stake: 1,
-    outcome: Outcome.awaiting,
+    outcome: Outcome.loss,
     league: 'Mexico',
     result: '2-0',
     red_card: true,
@@ -71,7 +74,7 @@ const data: Bet[] = [
     placed_bet: BetType.BTTS,
     odds: 2.2,
     stake: 1,
-    outcome: Outcome.awaiting,
+    outcome: Outcome.loss,
     league: 'Mexico',
     result: '2-0',
     red_card: true,
@@ -100,7 +103,7 @@ const data: Bet[] = [
     stake: 2,
     outcome: Outcome.win,
     league: 'Italy',
-    result: '',
+    result: '1-5',
     red_card: false,
     missed_penalty: false
   },
@@ -111,9 +114,9 @@ const data: Bet[] = [
     placed_bet: BetType.Over_2_25,
     odds: 1.95,
     stake: 2,
-    outcome: Outcome.awaiting,
+    outcome: Outcome.win,
     league: 'Spain',
-    result: '',
+    result: '2-1',
     red_card: false,
     missed_penalty: false
   },
@@ -124,9 +127,9 @@ const data: Bet[] = [
     placed_bet: BetType.Over_2_5,
     odds: 1.8,
     stake: 1,
-    outcome: Outcome.awaiting,
+    outcome: Outcome.loss,
     league: 'Denmark',
-    result: '',
+    result: '1-1',
     red_card: false,
     missed_penalty: false
   },
@@ -137,9 +140,9 @@ const data: Bet[] = [
     placed_bet: BetType.Over_2_75,
     odds: 2,
     stake: 1,
-    outcome: Outcome.awaiting,
+    outcome: Outcome.halfwin,
     league: 'Norway',
-    result: '',
+    result: '0-3',
     red_card: false,
     missed_penalty: false
   },
@@ -150,9 +153,9 @@ const data: Bet[] = [
     placed_bet: BetType.Over_1,
     odds: 3.45,
     stake: 1,
-    outcome: Outcome.awaiting,
+    outcome: Outcome.push,
     league: 'Turkey',
-    result: '',
+    result: '1.0',
     red_card: false,
     missed_penalty: false
   },
@@ -163,9 +166,9 @@ const data: Bet[] = [
     placed_bet: BetType.Over_1,
     odds: 3.45,
     stake: 1,
-    outcome: Outcome.awaiting,
+    outcome: Outcome.push,
     league: 'Turkey',
-    result: '',
+    result: '0-1',
     red_card: false,
     missed_penalty: false
   },
@@ -178,8 +181,8 @@ const data: Bet[] = [
     stake: 1,
     outcome: Outcome.win,
     league: 'Denmark',
-    result: '',
-    red_card: false,
+    result: '2-2',
+    red_card: true,
     missed_penalty: false
   },
   {
@@ -190,9 +193,9 @@ const data: Bet[] = [
     odds: 1.925,
     stake: 1,
     outcome: Outcome.halfwin,
-    league: '',
-    result: '',
-    red_card: false,
+    league: 'Netherlands',
+    result: '2-1',
+    red_card: true,
     missed_penalty: false
   },
   {
@@ -202,11 +205,11 @@ const data: Bet[] = [
     placed_bet: BetType.BTTS,
     odds: 1.7,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.win,
+    league: 'Italy',
+    result: '2-1',
     red_card: false,
-    missed_penalty: false
+    missed_penalty: true
   },
   {
     id: 13,
@@ -215,9 +218,9 @@ const data: Bet[] = [
     placed_bet: BetType.BTTS,
     odds: 1.95,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.win,
+    league: 'Italy',
+    result: '3-1',
     red_card: false,
     missed_penalty: false
   },
@@ -228,9 +231,9 @@ const data: Bet[] = [
     placed_bet: BetType.Over_2,
     odds: 2.04,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.win,
+    league: 'Italy',
+    result: '2-1',
     red_card: false,
     missed_penalty: false
   },
@@ -241,9 +244,9 @@ const data: Bet[] = [
     placed_bet: BetType.Over_3,
     odds: 1.825,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.push,
+    league: 'Netherlands',
+    result: '1-2',
     red_card: false,
     missed_penalty: false
   },
@@ -254,9 +257,9 @@ const data: Bet[] = [
     placed_bet: BetType.BTTS,
     odds: 1.8,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.win,
+    league: 'Spain',
+    result: '2-1',
     red_card: false,
     missed_penalty: false
   },
@@ -267,9 +270,9 @@ const data: Bet[] = [
     placed_bet: BetType.BTTS,
     odds: 1.75,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.loss,
+    league: 'England',
+    result: '2-0',
     red_card: false,
     missed_penalty: false
   },
@@ -280,9 +283,9 @@ const data: Bet[] = [
     placed_bet: BetType.Over_2,
     odds: 2.1,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.loss,
+    league: 'Portugal',
+    result: '1-0',
     red_card: false,
     missed_penalty: false
   },
@@ -293,11 +296,11 @@ const data: Bet[] = [
     placed_bet: BetType.Over_2_75,
     odds: 2,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.win,
+    league: 'Belgium',
+    result: '3-1',
     red_card: false,
-    missed_penalty: false
+    missed_penalty: true
   },
   {
     id: 20,
@@ -306,9 +309,9 @@ const data: Bet[] = [
     placed_bet: BetType.BTTS,
     odds: 2.25,
     stake: 1,
-    outcome: Outcome.awaiting,
-    league: '',
-    result: '',
+    outcome: Outcome.loss,
+    league: 'Spain',
+    result: '0-0',
     red_card: false,
     missed_penalty: true
   },
@@ -321,7 +324,7 @@ const data: Bet[] = [
     stake: 1,
     outcome: Outcome.win,
     league: 'Spain',
-    result: '',
+    result: '2-1',
     red_card: false,
     missed_penalty: false
   }
