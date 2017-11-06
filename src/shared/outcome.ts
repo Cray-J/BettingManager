@@ -1,9 +1,9 @@
 export enum Outcome {
-  awaiting = 'Awaiting',
-  win = 'Win',
-  halfwin = 'Half Win',
-  push = 'Push',
-  _void = 'Void',
-  halfloss = 'Half Loss',
-  loss = 'Loss'
+  awaiting = 'awaiting',
+  win = 'win',
+  halfwin = 'halfwin',
+  push = 'push',
+  _void = '_void',
+  halfloss = 'halfloss',
+  loss = 'loss'
 }

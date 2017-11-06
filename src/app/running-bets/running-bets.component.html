@@ -1,0 +1,24 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="bets">
+
+    <ng-container matColumnDef="Number">
+      <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.matchdate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Match">
+      <mat-header-cell *matHeaderCellDef>Match</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.match}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+

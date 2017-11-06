@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Bet } from '../shared/bet';
+import { betsSource } from '../bet-table/bet-table.component';
 
 @Component({
   selector: 'app-new-bet',
@@ -15,7 +16,8 @@ export class NewBetComponent implements OnInit {
 
   }
   onSubmit(bet: Bet) {
-    alert('New bet created ' + bet.match);
+    betsSource.push(bet);
+    alert('New bet created ' + bet.match + '. Total bets are now: ' + betsSource.length);
   }
 
 

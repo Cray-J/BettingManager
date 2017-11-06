@@ -1,11 +1,11 @@
 export enum BetType {
-  Over_1 = 'Over 1 Goal',
+  Over_1 = 'Over_1',
   BTTS = 'BTTS',
-  Over_2 = 'Over 2 Goals',
-  Over_2_25 = 'Over 2.25 Goals',
-  Over_2_5 = 'Over 2.5 Goals',
-  Over_2_75 = 'Over 2.75 Goals',
-  Over_3 = 'Over 3 Goals',
-  Over_4_25 = 'Over 4.25 Goals',
-  AWAY_OVER_2_5 = 'Away Team Over 2.5 Goals'
+  Over_2 = 'Over_2',
+  Over_2_25 = 'Over_2_25',
+  Over_2_5 = 'Over_2_5',
+  Over_2_75 = 'Over_2_75',
+  Over_3 = 'Over_3',
+  Over_4_25 = 'Over_4_25',
+  AWAY_OVER_2_5 = 'AWAY_OVER_2_5'
 }

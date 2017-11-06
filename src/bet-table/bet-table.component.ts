@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
 import { Bet } from '../shared/bet';
@@ -10,13 +10,40 @@ import { BetType } from '../shared/bet-type.enum';
   templateUrl: './bet-table.component.html',
   styleUrls: ['./bet-table.component.css']
 })
-export class BetTableComponent {
+export class BetTableComponent implements OnInit {
   displayedColumns= ['Number', 'Date', 'Match', 'Placed_bet', 'Odds', 'Stake', 'Outcome', 'Value_Return', 'Details'];
-  dataSource = new BetsDataSource();
+  dataSource: BetsDataSource;
   bet = new Bet();
-  public data = data;
+  public data = betsSource;
   public outcomes = Outcome;
   public bettypes = BetType;
+
+  ngOnInit() {
+    for ( const bet of this.data) {
+      this.setBet(bet);
+    }
+    this.dataSource = new BetsDataSource(betsSource);
+  }
+
+  setBet(bet: Bet): void {
+    const betSize = bet.stake * 10;
+
+    if (bet.outcome === Outcome.win) {
+      bet.valueReturn = betSize * bet.odds - betSize;
+      console.log('Won: ' + bet.valueReturn);
+    } else if (bet.outcome === Outcome.halfwin) {
+      bet.valueReturn = ((betSize * bet.odds - betSize) * 0.5);
+      console.log('Half won: ' + bet.valueReturn);
+    } else if (bet.outcome === Outcome.halfloss) {
+      bet.valueReturn = -betSize / 2;
+      console.log('Half lost: ' + bet.valueReturn);
+    } else if (bet.outcome === Outcome.loss) {
+      bet.valueReturn = -betSize;
+      console.log('Lost: ' + bet.valueReturn);
+    } else if (bet.outcome === Outcome.push || bet.outcome === Outcome._void || bet.outcome === Outcome.awaiting) {
+      bet.valueReturn = 0;
+    }
+  }
 
   determineBet(bet: Bet, $event): void {
     const betSize = bet.stake * 10;
@@ -37,22 +64,9 @@ export class BetTableComponent {
       bet.valueReturn = 0;
     }
   }
-
-  getBoolean(bet: boolean): string {
-    if (bet === true) {
-      return 'Yes';
-    }
-    return 'No';
-  }
-
-  setColor(bet: Bet): string {
-    return 'green';
-  }
-
-
 }
 
-const data: Bet[] = [
+export const betsSource: Bet[] = [
   {
     id: 1,
     matchdate: '29.10.2017',
@@ -92,7 +106,8 @@ const data: Bet[] = [
     league: 'Brazil',
     result: '0-0',
     red_card: false,
-    missed_penalty: false
+    missed_penalty: false,
+    valueReturn: 0
   },
   {
     id: 4,
@@ -332,9 +347,14 @@ const data: Bet[] = [
 
 
 
-export class BetsDataSource extends DataSource<any> {
+export class BetsDataSource extends DataSource<Bet> {
+
+  constructor(private bets: Bet[]) {
+    super();
+  }
+
   connect(): Observable<Bet[]> {
-    return Observable.of(data);
+    return Observable.of(this.bets);
   }
 
   disconnect() {}
