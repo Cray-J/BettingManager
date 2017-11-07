@@ -4,52 +4,85 @@
   </h1>
 </div>
 
-<mat-tab-group>
-  <mat-tab label="Running Bets">
-    <app-running-bets></app-running-bets>
-  </mat-tab>
-  <mat-tab label="New Bet">
-    <app-new-bet></app-new-bet>
-  </mat-tab>
-  <mat-tab label="My Stats">
-    <app-details></app-details>
-  </mat-tab>
-  <mat-tab label="Bets Table">
-    <app-bet-table></app-bet-table>
-  </mat-tab>
-
-
-  <mat-tab label="History">
-    <div class="example-container mat-elevation-z8">
-      <mat-table #table [dataSource]="dataSource">
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-        </ng-container>
-
-        <!-- Color Column -->
-        <ng-container matColumnDef="symbol">
-          <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Firebase Crud</a>
     </div>
-  </mat-tab>
-</mat-tab-group>
+
+    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="app-content">
+  <router-outlet></router-outlet>
+</div>
+<!--<mat-tab-group>-->
+  <!--<mat-tab label="Running Bets">-->
+    <!--<app-running-bets></app-running-bets>-->
+  <!--</mat-tab>-->
+  <!--<mat-tab label="New Bet">-->
+    <!--<app-new-bet></app-new-bet>-->
+  <!--</mat-tab>-->
+  <!--<mat-tab label="My Stats">-->
+    <!--<app-details></app-details>-->
+  <!--</mat-tab>-->
+  <!--<mat-tab label="Bets Table">-->
+    <!--<app-bet-table></app-bet-table>-->
+  <!--</mat-tab>-->
+
+
+  <!--<mat-tab label="History">-->
+    <!--<div class="example-container mat-elevation-z8">-->
+      <!--<mat-table #table [dataSource]="dataSource">-->
+
+        <!--&lt;!&ndash; Position Column &ndash;&gt;-->
+        <!--<ng-container matColumnDef="position">-->
+          <!--<mat-header-cell *matHeaderCellDef> No. </mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>-->
+        <!--</ng-container>-->
+
+        <!--&lt;!&ndash; Name Column &ndash;&gt;-->
+        <!--<ng-container matColumnDef="name">-->
+          <!--<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+        <!--</ng-container>-->
+
+        <!--&lt;!&ndash; Weight Column &ndash;&gt;-->
+        <!--<ng-container matColumnDef="weight">-->
+          <!--<mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+        <!--</ng-container>-->
+
+        <!--&lt;!&ndash; Color Column &ndash;&gt;-->
+        <!--<ng-container matColumnDef="symbol">-->
+          <!--<mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+        <!--</ng-container>-->
+
+        <!--<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
+        <!--<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>-->
+      <!--</mat-table>-->
+    <!--</div>-->
+  <!--</mat-tab>-->
+<!--</mat-tab-group>-->
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDy-Br5WtJFCHRzj3maVQF6UO7ltgbMBPM",
+    authDomain: "bettingmanager-3161.firebaseapp.com",
+    databaseURL: "https://bettingmanager-3161.firebaseio.com",
+    projectId: "bettingmanager-3161",
+    storageBucket: "bettingmanager-3161.appspot.com",
+    messagingSenderId: "175148907457"
+  };
+  firebase.initializeApp(config);
+</script>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AF } from '../providers/af';
+import { Router } from '@angular/router';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -9,9 +11,34 @@ import 'rxjs/add/observable/of';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Betting Manager';
+  title = 'Betting Manager 7/11 Ten-Fifty';
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = new ExampleDataSource();
+
+  public isLoggedIn: boolean;
+
+  constructor(public afService: AF, private router: Router) {
+    // This asynchronously checks if our user is logged in and will automatically
+    // redirect them to the Login page when the status changes.
+    // This is just a small thing that Firebase does that makes it easy to use.
+    this.afService.user.subscribe(
+      (auth) => {
+        if (auth == null) {
+          console.log('Not logged in.');
+          this.router.navigate(['login']);
+          this.isLoggedIn = false;
+        } else {
+          console.log('Successfully Logged in.');
+          this.isLoggedIn = true;
+          this.router.navigate(['']);
+        }
+      }
+    );
+  }
+
+  logout() {
+    this.afService.logout();
+  }
 }
 
 export interface Element {
