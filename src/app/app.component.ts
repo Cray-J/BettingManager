@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import { AF } from '../providers/af';
-import { Router } from '@angular/router';
-import { DataSource } from '@angular/cdk/collections';
-import { Observable } from 'rxjs/Observable';
+import {Component} from '@angular/core';
+import {DataSource} from '@angular/cdk/collections';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
@@ -15,30 +14,13 @@ export class AppComponent {
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = new ExampleDataSource();
 
-  public isLoggedIn: boolean;
+  public items: Observable<any>;
 
-  constructor(public afService: AF, private router: Router) {
-    // This asynchronously checks if our user is logged in and will automatically
-    // redirect them to the Login page when the status changes.
-    // This is just a small thing that Firebase does that makes it easy to use.
-    this.afService.user.subscribe(
-      (auth) => {
-        if (auth == null) {
-          console.log('Not logged in.');
-          this.router.navigate(['login']);
-          this.isLoggedIn = false;
-        } else {
-          console.log('Successfully Logged in.');
-          this.isLoggedIn = true;
-          this.router.navigate(['']);
-        }
-      }
-    );
+
+  constructor(afDb: AngularFireDatabase) {
+    this.items = afDb.list('bets').valueChanges();
   }
 
-  logout() {
-    this.afService.logout();
-  }
 }
 
 export interface Element {
@@ -79,7 +61,7 @@ const data: Element[] = [
  */
 export class ExampleDataSource extends DataSource<any> {
   /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<Element[]> {
+  connect(): Observable<any[]> {
     return Observable.of(data);
   }
 

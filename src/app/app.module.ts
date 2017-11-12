@@ -17,16 +17,15 @@ import {AF} from '../providers/af';
 import {HomePageComponent} from './home-page/home-page.component';
 import 'hammerjs';
 import {RouterModule, Routes} from '@angular/router';
-import {AngularFireAuth} from "angularfire2/auth";
+import {AngularFireAuth} from 'angularfire2/auth';
 
 import {AppComponent} from './app.component';
 import {DetailsModule} from '../details/details.module';
 import {BetTableModule} from '../bet-table/bet-table.module';
-import {MyFormComponent} from '../my-form/my-form.component';
 import {NewBetComponent} from '../new-bet/new-bet.component';
 import {RunningBetsModule} from './running-bets/running-bets.module';
 import {LoginPageComponent} from './login-page/login-page.component';
-import {AngularFireDatabase} from "angularfire2/database";
+import {AngularFireDatabase} from 'angularfire2/database';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyDy-Br5WtJFCHRzj3maVQF6UO7ltgbMBPM',
@@ -44,7 +43,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MyFormComponent,
     NewBetComponent,
     LoginPageComponent,
     HomePageComponent
