@@ -1,18 +1,22 @@
-import {Injectable} from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
-import {AngularFireAuth} from "angularfire2/auth";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import * as firebase from 'firebase/app';
+import { Bet } from '../shared/bet';
 
 @Injectable()
 export class AF {
-  user: Observable<firebase.User>;
-  items: AngularFireList<any[]>;
+  public bets: AngularFireList<Bet>;
+  public email: string;
+  public betsList: Observable<any>;
 
   constructor(public afAuth: AngularFireAuth, db: AngularFireDatabase) {
-    this.user = afAuth.authState;
-    this.items = db.list('items');
+    this.betsList = db.list('bets').valueChanges();
+    console.log(db.list('bets'));
+    console.log(db.list('bet').valueChanges());
+
   }
 
   /**
@@ -29,4 +33,5 @@ export class AF {
   logout() {
     this.afAuth.auth.signOut();
   }
+
 }

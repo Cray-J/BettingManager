@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {BetsDataSource} from "../../bet-table/bet-table.component";
+// import {BetsDataSource} from "../../bet-table/bet-table.component";
 
 @Component({
   selector: 'app-running-bets',
@@ -8,6 +8,6 @@ import {BetsDataSource} from "../../bet-table/bet-table.component";
 })
 export class RunningBetsComponent {
   displayedColumns= ['Number', 'Date', 'Match'];
-  bets: BetsDataSource;
+  // bets: BetsDataSource;
 
 }

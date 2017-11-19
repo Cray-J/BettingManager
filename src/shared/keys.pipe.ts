@@ -7,7 +7,6 @@ export class KeysPipe implements PipeTransform {
     const keys = [];
     for (const key in value) {
       if (value.hasOwnProperty(key)) {
-        // console.log('key: ' + key + ',  value: ' + value + ', valKey:' + value[key]);
         keys.push({ key, value: value[key] });
       }
     }

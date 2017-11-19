@@ -1,5 +1,7 @@
 <h3>New Bet</h3>
-<form class="formwidth" (ngSubmit)="onSubmit(bet)" myForm="ngForm">
+<form class="formwidth" (ngSubmit)="onSubmit(bet);  myNgForm.resetForm()" #myNgForm="ngForm">
+
+  <!--<form (ngSubmit)="mySubmitHandler(); myNgForm.resetForm()" #myNgForm="ngForm">-->
   <table class="fullwidth" cellspacing="0">
     <tr>
       <td>
@@ -7,13 +9,22 @@
           <input matInput placeholder="Match" id="match" [(ngModel)]="bet.match" name="match">
         </mat-input-container>
       </td>
-      <td>
-          <mat-select placeholder="Type of bet">
-            <mat-option *ngFor="let bettype of bettypes"
-                        [value]="bettype.key">
-                {{ bettype.value }}</mat-option>
-          </mat-select>
-      </td>
+      <!--<td>-->
+          <!--<mat-select placeholder="Selection">-->
+            <!--<mat-option *ngFor="let bettype of bettypes"-->
+                        <!--[value]="bettype">-->
+                <!--{{ bettype }}</mat-option>-->
+          <!--</mat-select>-->
+      <!--</td>-->
+      <!--<td>-->
+        <!--<mat-select placeholder="Bookie">-->
+          <!--<mat-option *ngFor="let bookie of bookies"-->
+                      <!--&lt;!&ndash;[value]="bookie.value"&ndash;&gt;-->
+          <!--&gt;-->
+            <!--{{ bookie }}-->
+          <!--</mat-option>-->
+        <!--</mat-select>-->
+      <!--</td>-->
       <td>
         <mat-input-container class="fullwitdh">
           <input matInput
@@ -46,18 +57,20 @@
     </tr>
     <tr>
       <td>
-        <mat-checkbox>Red Card</mat-checkbox>
+        <mat-checkbox [checked]="bet.live" (change)="bet.live = !bet.live">Live</mat-checkbox>
       </td>
-      <td>
-        <mat-checkbox>Missed Penalty</mat-checkbox>
-      </td>
+    </tr>
+    <tr>
+      <mat-checkbox [checked]="bet.missed_penalty" (change)="bet.missed_penalty = !bet.missed_penalty">Missed Penalty</mat-checkbox>
+    </tr>
+    <tr>
+      <mat-checkbox [checked]="bet.red_card" (change)="bet.red_card = !bet.red_card">Red Card</mat-checkbox>
     </tr>
   </table>
   <p>
     <button
       type="submit"
-      mat-raised-button
-      >
+      mat-raised-button>
         Submit</button>
   </p>
 </form>

@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {betsSource, BetTableComponent} from './bet-table.component';
+import {BetTableComponent} from './bet-table.component';
 import {
   MatButtonModule,
   MatInputModule,
@@ -12,14 +12,12 @@ import {
 import {BrowserModule} from '@angular/platform-browser';
 import 'hammerjs';
 import {FormsModule} from '@angular/forms';
-import {KeysPipe} from './keys.pipe';
 import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    BetTableComponent,
-    KeysPipe
+    BetTableComponent
   ],
   exports: [
     BetTableComponent
