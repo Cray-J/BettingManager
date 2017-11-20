@@ -10,7 +10,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Betting Manager 7/11 Ten-Fifty';
+  title = 'Betting Manager 19/11 Ten-Fiddy';
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = new ExampleDataSource();
 

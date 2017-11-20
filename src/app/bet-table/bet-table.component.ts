@@ -3,7 +3,6 @@ import {Observable} from 'rxjs/Observable';
 import {DataSource} from '@angular/cdk/collections';
 import {Bet} from '../shared/bet';
 import {Outcome} from '../shared/outcome';
-import {BetType} from '../shared/bet-type.enum';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 
 @Component({
@@ -12,14 +11,14 @@ import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
   styleUrls: ['./bet-table.component.css']
 })
 export class BetTableComponent implements OnInit {
-  displayedColumns= ['Number', 'Date', 'Match', 'Placed_bet', 'Odds', 'Stake', 'Outcome', 'Value_Return', 'Details'];
+  displayedColumns= ['Number', 'Date', 'Match', 'Odds', 'Stake', 'Outcome', 'Value_Return', 'Details'];
   public bets: AngularFireList<Bet>;
   public dbBets: Observable<Bet[]>;
 
   datasource: BetsDataSource;
 
-  public outcomes = Outcome;
-  public bettypes = BetType;
+  // public outcomes = Outcome;
+  // public bettypes = BetType;
 
   constructor(afDb: AngularFireDatabase) {
     this.dbBets = afDb.list('bets').valueChanges();

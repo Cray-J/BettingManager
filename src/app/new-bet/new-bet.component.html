@@ -9,22 +9,42 @@
           <input matInput placeholder="Match" id="match" [(ngModel)]="bet.match" name="match">
         </mat-input-container>
       </td>
-      <!--<td>-->
-          <!--<mat-select placeholder="Selection">-->
-            <!--<mat-option *ngFor="let bettype of bettypes"-->
-                        <!--[value]="bettype">-->
-                <!--{{ bettype }}</mat-option>-->
-          <!--</mat-select>-->
-      <!--</td>-->
-      <!--<td>-->
-        <!--<mat-select placeholder="Bookie">-->
-          <!--<mat-option *ngFor="let bookie of bookies"-->
-                      <!--&lt;!&ndash;[value]="bookie.value"&ndash;&gt;-->
-          <!--&gt;-->
-            <!--{{ bookie }}-->
-          <!--</mat-option>-->
-        <!--</mat-select>-->
-      <!--</td>-->
+      <td>
+        <mat-form-field>
+          <mat-select placeholder="Selection"
+                      name="selection"
+                      [(ngModel)]="bet.selection"
+                      >
+            <mat-option *ngFor="let bettype of bettypes"
+                        [value]="bettype.value">
+                {{ bettype.viewValue }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-select placeholder="Outcome"
+                      name="outcome"
+                      [ngModel]="bet.outcome"
+                      (ngModelChange)="bet.outcome = $event">
+            <mat-option *ngFor="let outcome of outcomes"
+                        [value]="outcome.value" >
+              {{ outcome.viewValue }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+        <mat-select placeholder="Bookie"
+                    name="bookie"
+                    [(ngModel)]="bet.bookie">
+          <mat-option *ngFor="let bookie of bookies"
+                      [value]="bookie.value">
+            {{ bookie.viewValue }}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+      </td>
       <td>
         <mat-input-container class="fullwitdh">
           <input matInput

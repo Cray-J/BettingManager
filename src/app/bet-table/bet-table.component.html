@@ -23,19 +23,19 @@
       <mat-cell *matCellDef="let element" [ngClass]="customWidthClass">{{element.match}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Placed_bet">
-      <mat-header-cell *matHeaderCellDef>Bet</mat-header-cell>
-      <mat-cell *matCellDef="let element" >
-        <mat-select
-          [ngModel] = "element?.selection"
-          (ngModelChange)="element.placed_bet = $event"
-        >
-          <mat-option
-            *ngFor="let bettype of bettypes | appKeys"
-            [value]="bettype.key">{{bettype.value}}</mat-option>
-        </mat-select>
-      </mat-cell>
-    </ng-container>
+    <!--<ng-container matColumnDef="Placed_bet">-->
+      <!--<mat-header-cell *matHeaderCellDef>Bet</mat-header-cell>-->
+      <!--<mat-cell *matCellDef="let element" >-->
+        <!--<mat-select-->
+          <!--[ngModel] = "element?.selection"-->
+          <!--(ngModelChange)="element.placed_bet = $event"-->
+        <!--&gt;-->
+          <!--<mat-option-->
+            <!--*ngFor="let bettype of bettypes | appKeys"-->
+            <!--[value]="bettype.key">{{bettype.value}}</mat-option>-->
+        <!--</mat-select>-->
+      <!--</mat-cell>-->
+    <!--</ng-container>-->
 
     <ng-container matColumnDef="Odds">
       <mat-header-cell *matHeaderCellDef>Odds</mat-header-cell>

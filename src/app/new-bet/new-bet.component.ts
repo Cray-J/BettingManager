@@ -17,6 +17,7 @@ export class NewBetComponent implements OnInit {
 
   public bettypes = BetType;
   public bookies = Bookie;
+  public outcomes = Outcome;
 
   constructor(public afService1: AF) {
     // this.bets = afService1.betsList;
@@ -31,15 +32,14 @@ export class NewBetComponent implements OnInit {
   }
 
    writeNewBet(bet: Bet) {
-    firebase.database().ref('bets/').set({
-      // id: bet.id,
+    firebase.database().ref('bets/').push({
       match: bet.match,
       matchdate: bet.matchdate,
       selection: bet.selection,
       bookie: bet.bookie,
       odds: bet.odds,
       stake: bet.stake,
-      outcome: Outcome.awaiting,
+      outcome: bet.outcome,
       league: bet.league,
       result: ' ',
       live: bet.live,
