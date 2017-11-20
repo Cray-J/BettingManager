@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFireList} from 'angularfire2/database';
-import {AF} from '../../providers/af';
+import {AF} from '../providers/af';
 
 @Component({
   selector: 'app-home-page',

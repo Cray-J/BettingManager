@@ -13,17 +13,16 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {AngularFireModule} from 'angularfire2';
-import {AF} from '../providers/af';
+import {AF} from './providers/af';
 import {HomePageComponent} from './home-page/home-page.component';
 import 'hammerjs';
 import {RouterModule, Routes} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
 
 import {AppComponent} from './app.component';
-import {DetailsModule} from '../details/details.module';
-import {BetTableModule} from '../bet-table/bet-table.module';
-import {NewBetComponent} from '../new-bet/new-bet.component';
-import {RunningBetsModule} from './running-bets/running-bets.module';
+import {DetailsModule} from './details/details.module';
+import {BetTableModule} from './bet-table/bet-table.module';
+import {NewBetComponent} from './new-bet/new-bet.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {AngularFireDatabase} from 'angularfire2/database';
 
@@ -61,7 +60,6 @@ const routes: Routes = [
     MatCardModule,
     DetailsModule,
     BetTableModule,
-    RunningBetsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(routes)
   ],
