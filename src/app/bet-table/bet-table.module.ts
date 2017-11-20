@@ -1,18 +1,9 @@
 import {NgModule} from '@angular/core';
 import {BetTableComponent} from './bet-table.component';
-import {
-  MatButtonModule,
-  MatInputModule,
-  MatOptionModule,
-  MatSelectModule,
-  MatTableModule,
-  MatTabsModule
-} from '@angular/material';
 
-import {BrowserModule} from '@angular/platform-browser';
 import 'hammerjs';
-import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
+
 
 
 @NgModule({
@@ -23,15 +14,7 @@ import {SharedModule} from '../shared/shared.module';
     BetTableComponent
   ],
   imports: [
-    MatTabsModule,
-    MatTableModule,
     SharedModule,
-    MatOptionModule,
-    MatSelectModule,
-    BrowserModule,
-    MatButtonModule,
-    MatInputModule,
-    FormsModule
   ]
 })
 export class BetTableModule { }

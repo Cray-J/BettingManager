@@ -1,12 +1,9 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {MatCardModule, MatGridListModule, MatTabsModule} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
 import 'hammerjs';
 
 import {BetTableModule} from '../bet-table/bet-table.module';
 import {DetailsComponent} from './details.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,13 +13,8 @@ import {DetailsComponent} from './details.component';
     DetailsComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    MatTabsModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    BetTableModule,
-    MatGridListModule
+    SharedModule,
+    BetTableModule
   ],
 
 })

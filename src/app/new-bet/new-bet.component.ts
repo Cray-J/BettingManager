@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import {Outcome} from '../shared/outcome';
 import {AF} from '../providers/af';
 import {BetType} from '../shared/bet-type.enum';
-import {Bookie} from "../shared/bookie.enum";
+import {Bookie} from '../shared/bookie.enum';
 
 @Component({
   selector: 'app-new-bet',
