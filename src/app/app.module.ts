@@ -61,7 +61,7 @@ const routes: Routes = [
     DetailsModule,
     BetTableModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [AF,
               AngularFireAuth,

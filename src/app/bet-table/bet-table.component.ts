@@ -24,10 +24,17 @@ export class BetTableComponent implements OnInit {
     this.dbBets = afDb.list('bets').valueChanges();
   }
 
+ // public items: Observable<any>;
+
+/*
+  constructor(afDb: AngularFireDatabase) {
+    this.items = afDb.list('bets').valueChanges();
+  }
+  */
 
   ngOnInit() {
   }
-
+/**
   setBet(bet: Bet): void {
     const betSize = bet.stake * 10;
 
@@ -66,7 +73,7 @@ export class BetTableComponent implements OnInit {
     } else if (Outcome[$event] === Outcome.push || Outcome[$event] === Outcome._void || Outcome[$event] === Outcome.awaiting) {
       bet.valueReturn = 0;
     }
-  }
+  }*/
 }
 
 export class BetsDataSource extends DataSource<Bet> {

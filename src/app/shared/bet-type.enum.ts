@@ -10,5 +10,6 @@ export const BetType = [
   { value: 'over_2_75', viewValue: 'Over 2.75 Goals'},
   { value: 'over_3', viewValue: 'Over 3 Goals'},
   { value: 'over_4_25', viewValue: 'Over 4.25 Goals'},
-  { value: 'away_over_2_5', viewValue: 'Away Over 2.5 Goals'}
+  { value: 'away_over_2_5', viewValue: 'Away Over 2.5 Goals'},
+  { value: 'away_win', viewValue: 'Away win'}
 ];

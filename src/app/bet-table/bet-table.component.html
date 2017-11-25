@@ -6,6 +6,13 @@
     <!--</mat-form-field>-->
   <!--</div>-->
 
+
+  <ul>
+    <li *ngFor="let item of dbBets | async">
+      {{ item | json}}
+    </li>
+  </ul>
+
   <mat-table #table [dataSource]="datasource">
 
     <ng-container matColumnDef="Number">
@@ -50,13 +57,7 @@
     <ng-container matColumnDef="Outcome">
       <mat-header-cell *matHeaderCellDef>Outcome</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <mat-select (valueChange)="determineBet(element, $event)"
-                    [ngModel]="element?.outcome"
-                    (ngModelChange)="element.outcome = $event">
-          <mat-option
-            *ngFor="let outcome of outcomes | appKeys"
-            [value]="outcome.key">{{outcome.value }}</mat-option>
-        </mat-select>
+       {{ element.viewValue}}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="Details">
