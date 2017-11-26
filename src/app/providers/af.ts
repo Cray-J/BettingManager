@@ -9,29 +9,31 @@ import { Bet } from '../shared/bet';
 @Injectable()
 export class AF {
   public bets: AngularFireList<Bet>;
-  public email: string;
+  // public email: string;
   public betsList: Observable<any>;
+  public betsTest: Bet[];
 
   constructor(public afAuth: AngularFireAuth, db: AngularFireDatabase) {
+    console.log('in service!');
     this.betsList = db.list('bets').valueChanges();
-    console.log(db.list('bets'));
-    console.log(db.list('bet').valueChanges());
+    // this.betsList.subscribe(result => this.betsTest.push(new Bet().fromJson(result)));
+    // console.log('BETSLIST SIZE: ' + this.betsTest.length);
 
   }
-
-  /**
-   * Logs in the user
-   * @returns
-   */
-  loginWithGoogle() {
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
-
-  /**
-   * Logs out the current user
-   */
-  logout() {
-    this.afAuth.auth.signOut();
-  }
+  //
+  // /**
+  //  * Logs in the user
+  //  * @returns
+  //  */
+  // loginWithGoogle() {
+  //   return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  // }
+  //
+  // /**
+  //  * Logs out the current user
+  //  */
+  // logout() {
+  //   this.afAuth.auth.signOut();
+  // }
 
 }

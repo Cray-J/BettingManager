@@ -10,6 +10,19 @@ import {AF} from "../providers/af";
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent {
+
+  afService: AF;
+
+  public numberOfBets: number;
+  public numberOfBestBets: number;
+
+  constructor(public afService1: AF) {
+    this.afService = afService1;
+
+    // this.list.subscribe(result => {console.log(result.length)});
+    this.afService.betsList.subscribe(result => console.log(result.length));
+    this.afService.betsList.subscribe(result => this.numberOfBets = result.length);
+  }
   // betTableComponent = new BetTableComponent();
   //
   // getWins(): number {
@@ -76,30 +89,4 @@ export class DetailsComponent {
   //   return wins;
   // }
   //
-  // getReturned(): number {
-  //   let total = 0;
-  //
-  //   for (const bet of this.betTableComponent.data) {
-  //     const betSize = bet.stake * 10;
-  //
-  //     if (bet.outcome === Outcome.win) {
-  //       total += betSize * bet.odds;
-  //       // console.log('Won: ' + betSize * bet.odds);
-  //     } else if (bet.outcome === Outcome.halfwin) {
-  //       total += betSize * (bet.odds * 0.5);
-  //       // console.log('Half won: ' + ((betSize * bet.odds) - betSize) * 0.5);
-  //     } else if (bet.outcome === Outcome.halfloss) {
-  //       total -= betSize * ( bet.odds  * 0.5);
-  //       // console.log('Half lost: ' + ((betSize * bet.odds) - betSize) * 0.5);
-  //     } else if (bet.outcome === Outcome.loss) {
-  //       total -= betSize;
-  //       // console.log('Lost: ' + betSize);
-  //     }
-  //   }
-  //   return total;
-  // }
-  //
-  // getNumberOfBets(): number {
-  //   return this.betTableComponent.data.length;
-  // }
 }

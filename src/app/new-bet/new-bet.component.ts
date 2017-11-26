@@ -1,5 +1,5 @@
-import { Component, OnInit} from '@angular/core';
-import { Bet } from '../shared/bet';
+import {Component, OnInit} from '@angular/core';
+import {Bet} from '../shared/bet';
 import * as firebase from 'firebase';
 import {Outcome} from '../shared/outcome';
 import {AF} from '../providers/af';
@@ -20,18 +20,33 @@ export class NewBetComponent implements OnInit {
   public outcomes = Outcome;
 
   constructor(public afService1: AF) {
-    // this.bets = afService1.betsList;
     this.afService = afService1;
   }
 
   ngOnInit() {
 
   }
+
   onSubmit(bet: Bet) {
     this.writeNewBet(bet);
   }
 
-   writeNewBet(bet: Bet) {
+  settleBet(bet: Bet): void {
+    const betSize = bet.stake * 10;
+    if (bet.outcome === 'win') {
+      bet.valueReturn = betSize * bet.odds - betSize;
+    } else if (bet.outcome === 'halfwin') {
+      bet.valueReturn = (betSize * bet.odds - betSize) * 0.5;
+    } else if (bet.outcome === 'halfloss') {
+      bet.valueReturn = -(betSize * 0.5);
+    } else if (bet.outcome === 'loss') {
+      bet.valueReturn = -betSize;
+    } else if ( bet.outcome === 'void' || bet.outcome === 'push') {
+      bet.valueReturn = 0;
+    }
+  }
+
+  writeNewBet(bet: Bet) {
     firebase.database().ref('bets/').push({
       match: bet.match,
       matchdate: bet.matchdate,
@@ -41,11 +56,11 @@ export class NewBetComponent implements OnInit {
       stake: bet.stake,
       outcome: bet.outcome,
       league: bet.league,
-      result: ' ',
+      result: bet.result,
       live: bet.live,
       red_card: bet.live,
       missed_penalty: bet.missed_penalty,
-      valueReturn: -1
+      valueReturn: bet.valueReturn
     });
   }
 

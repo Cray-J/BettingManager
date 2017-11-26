@@ -3,6 +3,7 @@ import {DataSource} from '@angular/cdk/collections';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {AngularFireDatabase} from 'angularfire2/database';
+import {Bet} from "./shared/bet";
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,18 @@ export class AppComponent {
   dataSource = new ExampleDataSource();
 
   public items: Observable<any>;
+  public bets: Bet[];
+  public bet: Bet;
 
 
   constructor(afDb: AngularFireDatabase) {
     this.items = afDb.list('bets').valueChanges();
+  }
+
+  getTest(json: JSON) {
+    const bet = new Bet();
+    bet.fromJson(json);
+    // console.log(bet);
   }
 
 }
@@ -62,6 +71,7 @@ const data: Element[] = [
 export class ExampleDataSource extends DataSource<any> {
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<any[]> {
+    console.log("IN CONNECT ON APP.COMPONENT");
     return Observable.of(data);
   }
 

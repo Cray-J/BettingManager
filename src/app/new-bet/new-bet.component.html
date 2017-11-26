@@ -5,10 +5,36 @@
   <table class="fullwidth" cellspacing="0">
     <tr>
       <td>
+        <mat-form-field class="fullwitdh">
+          <input matInput
+                 placeholder="Match"
+                 id="match"
+                 [(ngModel)]="bet.match"
+                 name="match">
+        </mat-form-field>
+      </td>
+      <td>
         <mat-input-container class="fullwitdh">
-          <input matInput placeholder="Match" id="match" [(ngModel)]="bet.match" name="match">
+          <input matInput
+                 type="text"
+                 placeholder="League"
+                 id="league"
+                 [(ngModel)]="bet.league"
+                 name="league">
         </mat-input-container>
       </td>
+      <td>
+        <mat-form-field class="fullwitdh">
+          <input matInput
+                 type="date"
+                 placeholder="Date"
+                 id="date"
+                 [(ngModel)]="bet.matchdate"
+                 name="date">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
       <td>
         <mat-form-field>
           <mat-select placeholder="Selection"
@@ -23,68 +49,89 @@
       </td>
       <td>
         <mat-form-field>
-          <mat-select placeholder="Outcome"
-                      name="outcome"
-                      [ngModel]="bet.outcome"
-                      (ngModelChange)="bet.outcome = $event">
-            <mat-option *ngFor="let outcome of outcomes"
-                        [value]="outcome.value" >
-              {{ outcome.viewValue }}</mat-option>
+          <mat-select placeholder="Bookie"
+                      name="bookie"
+                      [(ngModel)]="bet.bookie">
+            <mat-option *ngFor="let bookie of bookies"
+                        [value]="bookie.value">
+              {{ bookie.viewValue }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </td>
+    </tr>
+    <tr>
       <td>
-        <mat-form-field>
-        <mat-select placeholder="Bookie"
-                    name="bookie"
-                    [(ngModel)]="bet.bookie">
-          <mat-option *ngFor="let bookie of bookies"
-                      [value]="bookie.value">
-            {{ bookie.viewValue }}
-          </mat-option>
-        </mat-select>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-input-container class="fullwitdh">
+        <mat-form-field class="fullwitdh">
           <input matInput
                  placeholder="Odds"
                  id="odds"
                  [(ngModel)]="bet.odds"
                  name="odds">
-        </mat-input-container>
+        </mat-form-field>
       </td>
       <td>
-        <mat-input-container class="fullwitdh">
+        <mat-form-field class="fullwitdh">
           <input matInput
                  placeholder="Stake"
                  type="number"
                  id="stake"
                  [(ngModel)]="bet.stake"
                  name="stake">
-          </mat-input-container>
+        </mat-form-field>
       </td>
+      <td>
+        <mat-form-field>
+          <mat-select placeholder="Outcome"
+                      name="outcome"
+                      [(ngModel)]="bet.outcome"
+                      (change)="settleBet(bet)">
+            <mat-option *ngFor="let outcome of outcomes"
+                        [value]="outcome.value"
+            >
+              {{ outcome.viewValue }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <mat-form-field class="fullwidth">
+        <input matInput
+               placeholder="Result"
+               type="text"
+               id="result"
+               [(ngModel)]="bet.result"
+               name="result">
+      </mat-form-field>
+      <mat-form-field class="fullwidth">
+        <input matInput
+               type="number"
+               placeholder="Value return"
+               id="league"
+               disabled
+               [(ngModel)]="bet.valueReturn"
+               name="valueReturn">
+      </mat-form-field>
     </tr>
     <tr>
       <td>
-      <mat-input-container class="fullwitdh">
-        <input matInput type="date" placeholder="Date" id="date" [(ngModel)]="bet.matchdate" name="date">
-      </mat-input-container>
-      </td>
-      <mat-input-container class="fullwitdh">
-        <input matInput type="text" placeholder="League" id="league" [(ngModel)]="bet.league" name="league">
-      </mat-input-container>
-    </tr>
-    <tr>
-      <td>
-        <mat-checkbox [checked]="bet.live" (change)="bet.live = !bet.live">Live</mat-checkbox>
+        <mat-checkbox
+          [checked]="bet.live"
+          (change)="bet.live = !bet.live"> Live
+        </mat-checkbox>
       </td>
     </tr>
     <tr>
-      <mat-checkbox [checked]="bet.missed_penalty" (change)="bet.missed_penalty = !bet.missed_penalty">Missed Penalty</mat-checkbox>
+      <mat-checkbox
+        [checked]="bet.missed_penalty"
+        (change)="bet.missed_penalty = !bet.missed_penalty">Missed Penalty
+      </mat-checkbox>
     </tr>
     <tr>
-      <mat-checkbox [checked]="bet.red_card" (change)="bet.red_card = !bet.red_card">Red Card</mat-checkbox>
+      <mat-checkbox
+        [checked]="bet.red_card"
+        (change)="bet.red_card = !bet.red_card">Red Card
+      </mat-checkbox>
     </tr>
   </table>
   <p>
