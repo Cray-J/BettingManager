@@ -20,9 +20,15 @@
 
 <ul>
   <li *ngFor="let item of items | async">
-     {{ item | json}}
+     {{ item["valueReturn"] | json}}
+    <!--{{ setValue(item["valueReturn"])}}-->
   </li>
 </ul>
+
+<div>
+  total: {{ total }}
+
+</div>
 
 <!--<ul>-->
   <!--<li *ngFor="let item of items | async">-->

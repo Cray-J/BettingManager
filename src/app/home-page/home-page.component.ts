@@ -22,18 +22,18 @@ export class HomePageComponent implements OnInit {
   }
 
   isYou(email) {
-    if (email === this.afService.email) {
-      return true;
-    } else {
-      return false;
-    }
+    // if (email === this.afService.email) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
   }
 
   isMe(email) {
-    if (email === this.afService.email) {
-      return false;
-    } else {
-      return true;
-    }
+    // if (email === this.afService.email) {
+    //   return false;
+    // } else {
+    //   return true;
+    // }
   }
 }

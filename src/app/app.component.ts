@@ -16,6 +16,7 @@ export class AppComponent {
   dataSource = new ExampleDataSource();
 
   public items: Observable<any>;
+  public total = 0;
   public bets: Bet[];
   public bet: Bet;
 
@@ -28,6 +29,10 @@ export class AppComponent {
     const bet = new Bet();
     bet.fromJson(json);
     // console.log(bet);
+  }
+
+  public setTotal(json: JSON) {
+    this.total += json['valueReturn'];
   }
 
 }

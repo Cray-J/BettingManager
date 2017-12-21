@@ -1,7 +1,13 @@
 export const BetType = [
   { value: 'btts', viewValue: 'BTTS'},
+  { value: 'Home win', viewValue: 'Home win'},
+  { value: 'Home win -1', viewValue: 'Home win -1'},
+  { value: 'Home win -1.5', viewValue: 'Home win -1.5'},
   { value: 'Home win -2.5', viewValue: 'Home win -2.5'},
   { value: 'Home win & BTTS', viewValue: 'Home win & BTTS'},
+  { value: 'Home over 1.5', viewValue: 'Home Over 1.5 Goals'},
+  { value: 'Home over 2.5', viewValue: 'Home Over 2.5 Goals'},
+  { value: 'Home over 3.5', viewValue: 'Home Over 3.5 Goals'},
   { value: 'over 0.5', viewValue: 'Over 0.5 Goals'},
   { value: 'over 0.75', viewValue: 'Over 0.75 Goals'},
   { value: 'over 1', viewValue: 'Over 1 Goal'},
@@ -12,8 +18,17 @@ export const BetType = [
   { value: 'over 2.5', viewValue: 'Over 2.5 Goals'},
   { value: 'over 2.75', viewValue: 'Over 2.75 Goals'},
   { value: 'over 3', viewValue: 'Over 3 Goals'},
+  { value: 'over 3.25', viewValue: 'Over 3.25 Goals'},
+  { value: 'over 3.5', viewValue: 'Over 3.5 Goals'},
   { value: 'over 3.75', viewValue: 'Over 3.75 Goals'},
+  { value: 'over 4', viewValue: 'Over 4 Goals'},
   { value: 'over 4.25', viewValue: 'Over 4.25 Goals'},
-  { value: 'away win', viewValue: 'Away Win'},
+  { value: 'over 4.5', viewValue: 'Over 4.5 Goals'},
+  { value: 'over 7.5', viewValue: 'Over 7.5 Goals'},
+  { value: 'over 8', viewValue: 'Over 8 Goals'},
+  { value: 'away win & BTTS', viewValue: 'Away Win & BTTS'},
+  { value: 'away over 0.5', viewValue: 'Away Over 0.5 Goals'},
+  { value: 'away over 1.5', viewValue: 'Away Over 1.5 Goals'},
   { value: 'away over 2.5', viewValue: 'Away Over 2.5 Goals'}
 ];
+

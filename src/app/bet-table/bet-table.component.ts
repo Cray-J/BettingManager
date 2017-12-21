@@ -32,9 +32,9 @@ export class BetsDataSource extends DataSource<any> {
   public dbBets: Observable<any>;
   public afService: AF;
 
-  constructor(public afService: AF) {
+  constructor() {
     super();
-    this.afService = afService;
+    // this.afService = afService;
   }
 
   connect(): Observable<any[]> {

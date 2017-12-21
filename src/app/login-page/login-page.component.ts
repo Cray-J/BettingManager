@@ -12,9 +12,9 @@ export class LoginPageComponent {
   constructor(public afService: AF, private router: Router) {}
 
   login() {
-   this.afService.loginWithGoogle();
+   // this.afService.loginWithGoogle();
   //     // .then(() => {
   //     // // Send them to homepage if they are logged in
   //     // this.router.navigate(['']);
-    };
+    }
 }
